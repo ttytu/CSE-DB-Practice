@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from user.routers import router as user_router
-from auth.routers import router as auth_router
+from movieLens.routers import router as router
+
 
 # Set API info
 app = FastAPI(
@@ -36,18 +36,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-"""
-Auth APIs
-Provides sign-up, sign-in, and refresh-token APIs.
-"""
-
-app.include_router(auth_router)
-
-
 """
 User APIs
 Provides user CRUD APIs.
 """
 
-app.include_router(user_router)
+app.include_router(router)
