@@ -2,6 +2,9 @@
 	"recommendations": [
 		"ms-python.python",
 		"ms-python.black-formatter",
+		"ms-vscode-remote.remote-containers",
+		"dsznajder.es7-react-js-snippets",
+		"ms-azuretools.vscode-docker",
 		"ms-vscode-remote.remote-containers"
 	]
 }
