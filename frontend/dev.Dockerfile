@@ -2,10 +2,10 @@
 FROM node:20.11.1
 
 # Set the working directory inside the container
-WORKDIR /frontend
+WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
-COPY package*.json /frontend
+COPY package*.json /app
 
 # Install dependencies
 RUN npm install

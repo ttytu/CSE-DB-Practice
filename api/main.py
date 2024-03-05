@@ -5,11 +5,11 @@ from movieLens.routers import router as router
 
 # Set API info
 app = FastAPI(
-    title="Example API",
-    description="This is an example API of FastAPI",
+    title="CSE3207 DB API",
+    description="This is an example API of FastAPI, connected to MySQL DB.",
     contact={
-        "name": "Masaki Yoshiiwa",
-        "email": "masaki.yoshiiwa@gmail.com",
+        "name": "Junhyung Park",
+        "email": "quixote1103@inha.edu",
     },
     docs_url="/v1/docs",
     redoc_url="/v1/redoc",
@@ -41,4 +41,4 @@ User APIs
 Provides user CRUD APIs.
 """
 
-app.include_router(router)
+app.include_router(router, tags=["MovieLens"])

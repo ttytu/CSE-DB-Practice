@@ -1,9 +1,6 @@
 {
-	"name": "fastapi-app",
-	"dockerComposeFile": [
-		"../docker-compose.yml"
-	],
-	"service": "api",
+	"name": "fastapi",
+	"dockerFile": "dev.Dockerfile",
 	"workspaceFolder": "/app",
 	"customizations": {
 		"vscode": {
