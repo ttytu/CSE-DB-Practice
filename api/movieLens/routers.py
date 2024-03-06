@@ -10,14 +10,22 @@ from movieLens.controllers import (
     get_genres,
     get_genre,
     get_ratings,
-    get_rating,
+    get_rating, 
+    get_user_rating,
+    get_movie_rating, 
+    get_movie_genre
 )
 
 
-router = APIRouter()
+movie_router = APIRouter()
+user_router = APIRouter()
+genre_router = APIRouter()
+rating_router = APIRouter()
 
 
-@router.get("/v1/movie")
+# Movie Controllers
+
+@movie_router.get("/v1/movie")
 def get_movies_api(limit: int = 10, offset: int = 0):
     """
     This movies get API allow you to fetch all movie data.
@@ -26,7 +34,7 @@ def get_movies_api(limit: int = 10, offset: int = 0):
     return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(movies))
 
 
-@router.get("/v1/movie/{movie_id}")
+@movie_router.get("/v1/movie/{movie_id}")
 def get_movie_api(movie_id: int):
     """
     This movie API allow you to fetch specific movie data.
@@ -35,7 +43,27 @@ def get_movie_api(movie_id: int):
     return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(movie))
 
 
-@router.get("/v1/user")
+@movie_router.get("/v1/movie/{movie_id}/rating")
+def get_movie_rating_api(movie_id: int):
+	"""
+	This rating API allow you to fetch specific rating data.
+	"""
+	rating = get_movie_rating(movie_id)
+	return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(rating))
+
+
+@movie_router.get("/v1/movie/{movie_id}/genre")
+def get_movie_genre_api(movie_id: int):
+	"""
+	This genre API allow you to fetch specific genre data.
+	"""
+	genre = get_movie_genre(movie_id)
+	return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(genre))
+
+
+# User Controllers
+
+@user_router.get("/v1/user")
 def get_users_api(limit: int = 10, offset: int = 0):
     """
     This users get API allow you to fetch all user data.
@@ -44,7 +72,7 @@ def get_users_api(limit: int = 10, offset: int = 0):
     return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(users))
 
 
-@router.get("/v1/user/{user_id}")
+@user_router.get("/v1/user/{user_id}")
 def get_user_api(user_id: int):
     """
     This user API allow you to fetch specific user data.
@@ -53,7 +81,18 @@ def get_user_api(user_id: int):
     return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(user))
 
 
-@router.get("/v1/genre")
+@user_router.get("/v1/user/{user_id}/rating")
+def get_user_rating_api(user_id: int):
+	"""
+	This rating API allow you to fetch specific rating data.
+	"""
+	rating = get_user_rating(user_id)
+	return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(rating))
+
+
+# Genre Controllers
+
+@genre_router.get("/v1/genre")
 def get_genres_api(limit: int = 10, offset: int = 0):
     """
     This genres get API allow you to fetch all genre data.
@@ -62,7 +101,7 @@ def get_genres_api(limit: int = 10, offset: int = 0):
     return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(genres))
 
 
-@router.get("/v1/genre/{genre_id}")
+@genre_router.get("/v1/genre/{genre_id}")
 def get_genre_api(genre_id: int):
     """
     This genre API allow you to fetch specific genre data.
@@ -71,7 +110,9 @@ def get_genre_api(genre_id: int):
     return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(genre))
 
 
-@router.get("/v1/rating")
+# Rating Controllers
+
+@rating_router.get("/v1/rating")
 def get_ratings_api(limit: int = 10, offset: int = 0):
     """
     This ratings get API allow you to fetch all rating data.
@@ -80,10 +121,10 @@ def get_ratings_api(limit: int = 10, offset: int = 0):
     return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(ratings))
 
 
-@router.get("/v1/rating/{user_id}")
-def get_rating_api(user_id: int):
-    """
-    This rating API allow you to fetch specific rating data.
-    """
-    rating = get_rating(user_id)
-    return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(rating))
+@rating_router.get("/v1/rating/{rating_id}")
+def get_rating_api(rating_id: int):
+	"""
+	This rating API allow you to fetch specific rating data.
+	"""
+	rating = get_rating(rating_id)
+	return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(rating))

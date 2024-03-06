@@ -6,7 +6,9 @@ class Movie(BaseModel):
     movieTitle: str
     releaseDate: str
     videoReleaseDate: str
-    IMDbURL: str
+    year: int
+    backdrop_path: str
+    poster_path: str
 
 
 class MovieGenre(BaseModel):
