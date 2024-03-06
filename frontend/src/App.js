@@ -15,7 +15,7 @@ function App() {
 		<div className="App text-slate-50 bg-slate-950 min-w-fit">
 			<Nav />
 
-			<div className='max-w-screen-lg mx-auto pt-24 h-screen'>
+			<div className='max-w-screen-lg mx-auto pt-24'>
 				<Routes location={location}>
 					<Route key={location.pathname} path='/' element={<Home />} />
 				</Routes>
