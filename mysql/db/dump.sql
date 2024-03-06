@@ -24,9 +24,9 @@ DROP TABLE IF EXISTS `movie`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `movie` (
   `movieId` int NOT NULL,
-  `movieTitle` varchar(100) NOT NULL,
+  `videoReleaseDate` varchar(100) NOT NULL,
   `releaseDate` text NOT NULL,
-  `videoReleaseDate` text NOT NULL,
+  `movieTitle` text NOT NULL,
   `year` int NOT NULL,
   `backdrop_path` text NOT NULL,
   `poster_path` text NOT NULL,
@@ -141,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-06 17:17:49
+-- Dump completed on 2024-03-06 18:26:28
