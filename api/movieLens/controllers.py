@@ -32,7 +32,9 @@ def get_movie(id: int) -> dict:
 			movie.movieTitle,
 			movie.releaseDate,
 			movie.videoReleaseDate,
-			movie.IMDbURL
+			movie.year, 
+			movie.backdrop_path,
+			movie.poster_path
 		FROM movie
 		WHERE movie.movieId = %s
 		""",
@@ -77,6 +79,26 @@ def get_movie_genre(movie_id: int) -> list[dict]:
 	if len(genres) == 0:
 		raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Genre not found")
 	return genres
+
+def search_movies(query: str, limit: int = 10, offset: int = 0) -> list[dict]:
+	database = DatabaseConnector()
+	movies = database.query_get(
+		"""
+		SELECT
+			movie.movieId,
+			movie.movieTitle,
+			movie.releaseDate,
+			movie.videoReleaseDate,
+			movie.year, 
+			movie.backdrop_path,
+			movie.poster_path
+		FROM movie
+		WHERE movie.movieTitle LIKE %s
+		LIMIT %s OFFSET %s
+		""",
+		(f"%{query}%", limit, offset),
+	)
+	return movies
 
 
 # User Controllers
