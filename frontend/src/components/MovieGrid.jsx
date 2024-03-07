@@ -2,9 +2,9 @@ import React from 'react';
 import MovieCard from './MovieCard';
 
 
-const MovieCarousel = ({ movies }) => {
+const MovieGrid = ({ movies }) => {
 	return (
-		<div className="flex flex-nowrap gap-2 overflow-x-scroll shrink-0 snap-x">
+		<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
 			{movies.map((movie) => (
 				<MovieCard key={movie.movieId} movie={movie} />
 			))}
@@ -12,4 +12,4 @@ const MovieCarousel = ({ movies }) => {
 	);
 };
 
-export default MovieCarousel;
+export default MovieGrid;
