@@ -13,7 +13,8 @@ from movieLens.controllers import (
     get_rating, 
     get_user_rating,
     get_movie_rating, 
-    get_movie_genre
+    get_movie_genre, 
+    search_movies
 )
 
 
@@ -59,6 +60,15 @@ def get_movie_genre_api(movie_id: int):
 	"""
 	genre = get_movie_genre(movie_id)
 	return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(genre))
+
+
+@movie_router.get("/v1/search")
+def search_movies_api(query: str, limit: int = 10, offset: int = 0):
+	"""
+	This search API allow you to search specific movie data.
+	"""
+	movies = search_movies(query, limit, offset)
+	return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(movies))
 
 
 # User Controllers
