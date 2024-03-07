@@ -11,27 +11,12 @@ import Footer from './components/Footer';
 
 function App() {
 	const location = useLocation();
-	const [userId, setUserId] = useState(null);
-	const [user, setUser] = useState(null);
-
-	useEffect(() => {
-		const fetchUser = async () => {
-			try {
-				const response = await fetch(`http://localhost:8000/v1/user/${userId}`);
-				const data = await response.json();
-				setUser(data);
-				console.log('user:', data);
-			} catch (error) {
-				console.error('Error fetching user:', error);
-			}
-		};
-
-		fetchUser();
-	}, [userId]);
+	const [isloggedIn, setIsLoggedIn] = useState(localStorage.getItem('isloggedIn') || false);
+	const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
 	return (
 		<div className="App text-slate-50 bg-slate-950 min-w-fit">
-			<Nav user={userId} setUser={setUserId} />
+			<Nav user={user} setUser={setUser} isloggedIn={isloggedIn} setIsLoggedIn={setIsLoggedIn} />
 
 			<div className='mx-auto'>
 				<Routes location={location}>

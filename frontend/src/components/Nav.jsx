@@ -1,20 +1,46 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
-const Nav = ({ user, setUser }) => {
+const Nav = ({ user, setUser, isloggedIn, setIsLoggedIn }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [isloggedIn, setIsLoggedIn] = useState(false);
 	const location = useLocation();
+
+	const fetchUser = async (userId) => {
+		try {
+			const response = await fetch(`http://localhost:8000/v1/user/${userId}`);
+			const data = await response.json();
+
+			if (response.ok) {
+				setUser(data);
+				setIsLoggedIn(true);
+
+				localStorage.setItem('user', JSON.stringify(data));
+				localStorage.setItem('isloggedIn', true);
+
+				console.log('user:', data);
+			} else {
+				console.error('Error fetching user:', data);
+				alert('User not found');
+			}
+		} catch (error) {
+			console.error('Error fetching user:', error);
+		}
+	};
 
 	const loginhandler = (userId) => {
 		if (isloggedIn) {
 			setUser(null);
 			setIsLoggedIn(false);
+
+			localStorage.removeItem('user');
+			localStorage.removeItem('isloggedIn');
 		} else if (userId > 0) {
-			setUser(userId);
-			setIsLoggedIn(true);
+			fetchUser(userId);
+		}
+		else {
+			alert('Please enter a valid User ID');
 		}
 	};
 
@@ -50,9 +76,9 @@ const Nav = ({ user, setUser }) => {
 						<input
 							id='selectUser'
 							type="text"
-							placeholder="Select User"
+							placeholder={isloggedIn ? user.userId : "Enter User ID"}
 							className={`bg-slate-500 text-slate-50 rounded-s-full transition-all px-4 w-32 ${isloggedIn ? 'pointer-events-none opacity-50' : ''}`}
-							disabled={isloggedIn}
+							disabled={isloggedIn ? true : false}
 						/>
 						<button
 							onClick={() => loginhandler(document.querySelector('#selectUser').value)}
