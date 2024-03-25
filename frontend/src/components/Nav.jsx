@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 
 const Nav = ({ user, setUser, isloggedIn, setIsLoggedIn }) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [input, setInput] = useState('');
 	const location = useLocation();
 
 	const fetchUser = async (userId) => {
@@ -33,11 +33,11 @@ const Nav = ({ user, setUser, isloggedIn, setIsLoggedIn }) => {
 		if (isloggedIn) {
 			setUser(null);
 			setIsLoggedIn(false);
-
 			localStorage.removeItem('user');
 			localStorage.removeItem('isloggedIn');
 		} else if (userId > 0) {
 			fetchUser(userId);
+			alert('User logged in');
 		}
 		else {
 			alert('Please enter a valid User ID');
@@ -45,9 +45,9 @@ const Nav = ({ user, setUser, isloggedIn, setIsLoggedIn }) => {
 	};
 
 	return (
-		<nav className="fixed bg-opacity-30 p-4 bg-slate-950 backdrop-blur-xl z-50 w-full border-b-[1px] border-b-slate-800">
+		<nav className="fixed bg-opacity-30 p-4 bg-slate-950 backdrop-blur-xl z-40 w-full border-b-[1px] border-slate-600 border-opacity-50">
 			<div className="max-w-screen-lg mx-auto flex justify-between">
-				<Link to="/" className="flex gap-1 hover:text-slate-300">
+				<Link to="/" className="flex gap-1 hover:text-slate-300 py-1">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
 						<path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
 					</svg>
@@ -56,37 +56,40 @@ const Nav = ({ user, setUser, isloggedIn, setIsLoggedIn }) => {
 					</span>
 				</Link>
 
-				<div className={`flex flex-col overflow-hidden`}>
-					<button
-						className={`group transition ease-in-out self-end`}
-						onClick={() => setIsOpen(!isOpen)}
-					>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`group-hover:text-slate-300 w-6 h-6`}>
-							<path
-								key={isOpen ? "open" : "closed"}
-								strokeLinecap="round" strokeLinejoin="round"
-								d={isOpen ?
-									"M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" :
-									"M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"}
-							/>
-						</svg>
-					</button>
+				<div className={`gap-[1px] transition-all ml-1 flex *:bg-opacity-60 *:py-1 items-center text-slate-50`}>
+					{location.pathname !== '/search' &&
+						<Link to="/search" className={`text-slate-50 hover:text-slate-400 transition-all px-4`}>
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+								<path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+							</svg>
+						</Link>
+					}
 
-					<div className={`${isOpen ? "h-[40px] pt-2" : "h-0"} gap-[1px] transition-all flex`}>
+					{isloggedIn ?
+						<Link
+							to={`/user/${user.userId}`}
+							className={`bg-slate-800 hover:text-slate-400 transition-all px-2 flex gap-1 items-center rounded-s-full`}
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+								<path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+							</svg>
+							User {user.userId}
+						</Link> :
 						<input
 							id='selectUser'
 							type="text"
-							placeholder={isloggedIn ? user.userId : "Enter User ID"}
-							className={`bg-slate-500 text-slate-50 rounded-s-full transition-all px-4 w-32 ${isloggedIn ? 'pointer-events-none opacity-50' : ''}`}
-							disabled={isloggedIn ? true : false}
+							placeholder={isloggedIn ? user.userId : "User ID"}
+							className={`bg-slate-800 rounded-s-full transition-all px-4 w-24 disabled:bg-slate-800 focus:bg-slate-800`}
+							disabled={isloggedIn}
+							onChange={(e) => setInput(e.target.value)}
 						/>
-						<button
-							onClick={() => loginhandler(document.querySelector('#selectUser').value)}
-							className={`bg-slate-500 text-slate-50 px-4 rounded-e-full transition-all ${isloggedIn ? '' : ''}`}
-						>
-							{isloggedIn ? "Logout" : "Login"}
-						</button>
-					</div>
+					}
+					<button
+						onClick={() => loginhandler(input)}
+						className={`bg-slate-800 pl-2 pr-4 rounded-e-full hover:text-slate-400 transition-all`}
+					>
+						{isloggedIn ? "Logout" : "Login"}
+					</button>
 				</div>
 			</div>
 		</nav >

@@ -4,7 +4,7 @@ import MovieCard from './MovieCard';
 
 const MovieSlider = ({ movies }) => {
 	return (
-		<div className="flex flex-nowrap gap-2 overflow-x-scroll shrink-0 snap-x h-96">
+		<div className="flex flex-nowrap gap-1 md:gap-2 overflow-x-scroll">
 			{movies.map((movie) => (
 				<MovieCard key={movie.movieId} movie={movie} />
 			))}
