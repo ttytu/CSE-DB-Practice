@@ -1,11 +1,10 @@
-FROM node:20.12.0-alpine3.18
+FROM node:lts-alpine
 
 WORKDIR /app
 
 COPY package.json /app
-COPY package-lock.json /app
 
-RUN npm config set fetch-retry-maxtimeout 1000000 && npm install
+RUN npm install
 COPY . /app
 
 EXPOSE 3000
