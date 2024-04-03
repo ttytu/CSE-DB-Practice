@@ -32,7 +32,7 @@ const MovieDetails = ({ movieId, user }) => {
 	useEffect(() => {
 		async function fetchMovies() {
 			try {
-				const response = await fetch('http://localhost:8000/v1/movie');
+				const response = await fetch('http://localhost:8001/v1/movie');
 				const data = await response.json();
 				setrelatedMovies(data);
 			} catch (error) { }
