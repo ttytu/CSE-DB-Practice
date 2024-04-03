@@ -7,7 +7,7 @@
 3. Clone or Download Repository [CSE3207-Database](https://github.com/ttytu/CSE3207-Database) 
 4. Open repo in IDE `cd CSE3207-Database` 
 5. Make shure ports 3307, 8001, 3001 are not preoccupied 
-6. Build Docker Image & Run Images in Containers `docker-compose up` \
+6. Build Docker Image & Run Images in Containers `docker-compose up` 
 7. Happy coding! 
 
 --- 
@@ -37,7 +37,8 @@ git clone https://github.com/ttytu/CSE3207-Database.git
 
 ```shell
 cd CSE3207-Database 
-docker-compose up
+docker-compose build 
+docker-compose up 
 ```
 
 #### Project Development Container Ports
@@ -45,8 +46,6 @@ docker-compose up
 - DB server `http://localhost:3307` 
 - API server `http://localhost:8001` 
 - Frontend server `http://localhost:3001` 
-
-*각 포트 비어있어야 함*
 
 --- 
 
