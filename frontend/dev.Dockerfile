@@ -1,20 +1,13 @@
-# Use the official Node 20.11.1 image as the base image
 FROM node:20.12.0-alpine3.18
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json /app
+COPY package.json /app
+COPY package-lock.json /app
 
-# Install dependencies
-RUN npm install
+RUN npm config set fetch-retry-maxtimeout 1000000 && npm install
+COPY . /app
 
-# Copy the rest of the application code to the working directory
-COPY . .
-
-# Expose the port that the app will run on
 EXPOSE 3000
 
-# Start the app
 CMD ["npm", "start"]
