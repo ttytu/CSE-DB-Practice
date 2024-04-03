@@ -11,7 +11,7 @@ const MovieSearch = () => {
 
 	const fetchMovies = async (query) => {
 		try {
-			const response = await fetch(`http://localhost:8000/v1/search?query=${query}`, {
+			const response = await fetch(`http://localhost:8001/v1/search?query=${query}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'

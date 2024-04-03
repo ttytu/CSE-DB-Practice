@@ -13,7 +13,7 @@ const MovieDetails = ({ movieId, user }) => {
 	useEffect(() => {
 		const fetchMovie = async () => {
 			try {
-				var fetchString = `http://localhost:8000/v1/movie/${movieId}`;
+				var fetchString = `http://localhost:8001/v1/movie/${movieId}`;
 				if (user) { fetchString += `?user_id=${user.userId}`; }
 				const response = await fetch(fetchString);
 				const movie = await response.json();

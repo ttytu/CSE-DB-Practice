@@ -1,12 +1,24 @@
 ## CSE3207 Database Project
 
+### Setup 
+
+1. Download & Install Docker Desktop [Docker Desktop](https://www.docker.com/products/docker-desktop/) 
+2. Run Docker Desktop 
+3. Clone or Download Repository [CSE3207-Database](https://github.com/ttytu/CSE3207-Database) 
+4. Open repo in IDE `cd CSE3207-Database` 
+5. Make shure ports 3307, 8001, 3001 are not preoccupied 
+6. Build Docker Image & Run Images in Containers `docker-compose up` \
+7. Happy coding! 
+
+--- 
+
 ### Project Structure
 
 - GitHub 
 - Docker 
-- DB: MySQL `/mysql`
+- Database: MySQL `/mysql`
 - API: FastAPI Python `/api`
-- Frontend: Reaact JS `/frontend` 
+- Frontend: React JS `/frontend` 
 
 --- 
 
@@ -24,14 +36,15 @@ git clone https://github.com/ttytu/CSE3207-Database.git
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) 
 
 ```shell
+cd CSE3207-Database 
 docker-compose up
 ```
 
 #### Project Development Container Ports
 
-- DB server `http://localhost:3306` 
-- API server `http://localhost:8000` 
-- Frontend server `http://localhost:3000` 
+- DB server `http://localhost:3307` 
+- API server `http://localhost:8001` 
+- Frontend server `http://localhost:3001` 
 
 *각 포트 비어있어야 함*
 
@@ -55,12 +68,3 @@ docker-compose up
 
 --- 
 
-```
- ______   _______  _______  _______  _______  _______  _______  _______ 
-|      | |   _   ||       ||   _   ||  _    ||   _   ||       ||       |
-|  _    ||  |_|  ||_     _||  |_|  || |_|   ||  |_|  ||  _____||    ___|
-| | |   ||       |  |   |  |       ||       ||       || |_____ |   |___ 
-| |_|   ||       |  |   |  |       ||  _   | |       ||_____  ||    ___|
-|       ||   _   |  |   |  |   _   || |_|   ||   _   | _____| ||   |___ 
-|______| |__| |__|  |___|  |__| |__||_______||__| |__||_______||_______|
-```
