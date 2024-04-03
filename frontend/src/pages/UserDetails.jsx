@@ -1,9 +1,7 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import MovieGrid from '../components/MovieGrid';
-import MovieSlider from '../components/MovieSlider';
 import MovieList from '../components/MovieList';
+import MovieSlider from '../components/MovieSlider';
 
 
 const UserDetails = ({ user }) => {
@@ -15,7 +13,6 @@ const UserDetails = ({ user }) => {
 				const response = await fetch(`http://localhost:8001/v1/user/${user.userId}/rated`);
 				const data = await response.json();
 				setMovies(data);
-				console.log(data);
 			} catch (error) {
 				console.error('Error fetching movies:', error);
 			}

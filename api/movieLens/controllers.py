@@ -189,42 +189,6 @@ def get_user_rated_movies(user_id: int) -> list[dict]:
 	return movies
 
 
-def get_user_rating(user_id: int) -> list[dict]:
-	database = DatabaseConnector()
-	ratings = database.query_get(
-		"""
-		SELECT
-			ratings.ratingId,
-			ratings.userId,
-			ratings.movieId,
-			ratings.ratingScore,
-			ratings.timestamp
-		FROM ratings
-		WHERE ratings.userId = %s
-		""",
-		(user_id),
-	)
-	if len(ratings) == 0:
-		raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Rating not found")
-	return ratings
-
-
-def get_user_average_rating(user_id: int) -> float:
-	database = DatabaseConnector()
-	ratings = database.query_get(
-		"""
-		SELECT
-			AVG(ratings.ratingScore)
-		FROM ratings
-		WHERE ratings.userId = %s
-		""",
-		(user_id),
-	)
-	if len(ratings) == 0 or ratings[0][0] is None:
-		raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No ratings found for this user")
-	return float(ratings[0][0])
-
-
 # Genre Controllers
 
 

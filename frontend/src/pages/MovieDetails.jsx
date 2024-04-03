@@ -1,9 +1,8 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import Banner from '../components/Banner';
 import MovieSlider from '../components/MovieSlider';
-import { Link } from 'react-router-dom';
 
 
 const MovieDetails = ({ movieId, user }) => {
@@ -18,7 +17,6 @@ const MovieDetails = ({ movieId, user }) => {
 				const response = await fetch(fetchString);
 				const movie = await response.json();
 				setMovie(movie);
-				console.log('movie:', movie);
 			} catch (error) {
 				console.error('Error fetching movie:', error);
 			}

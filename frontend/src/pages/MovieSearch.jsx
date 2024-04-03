@@ -18,7 +18,6 @@ const MovieSearch = () => {
 				}
 			});
 			const data = await response.json();
-			console.log('data:', data);
 			setMovies(data);
 			return data;
 		} catch (error) {
@@ -54,7 +53,7 @@ const MovieSearch = () => {
 
 	return (
 		<div className="max-w-screen-lg mx-auto w-full grid grid-cols-1 gap-24 pt-40">
-			<div className='grid grid-cols-1 gap-4 mx-auto w-full md:w-2/3 p-4 bg-slate-700 rounded-none md:rounded-lg'>
+			<div className='grid grid-cols-1 gap-4 mx-auto w-full md:w-2/3 p-4 bg-slate-700 rounded-none md:rounded-xl'>
 				<form className='flex gap-[1px] *:py-2'>
 					<input
 						type='text'

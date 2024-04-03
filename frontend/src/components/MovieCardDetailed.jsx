@@ -6,7 +6,7 @@ const MovieCardDetailed = ({ movie }) => {
 	const baseurl = "https://image.tmdb.org/t/p/w500";
 
 	return (
-		<Link to={"/movie/" + movie.movieId} className="overflow-hidden flex flex-row w-full *:transition-all *:ease-in-out group shadow bg-slate-800 rounded-lg">
+		<Link to={"/movie/" + movie.movieId} className="overflow-hidden flex flex-row w-full *:transition-all *:ease-in-out group shadow bg-slate-800 rounded-xl">
 			<img src={baseurl + movie.poster_path} alt={movie.movieTitle} className="h-[150px] w-[100px] group-hover:scale-[102%]" />
 
 			<div className='relative w-full h-full'>

@@ -1,14 +1,15 @@
-import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
-import Home from './pages/Home';
-import MovieSearch from './pages/MovieSearch';
-import MovieDetails from './pages/MovieDetails';
+import './App.css';
 
-import Nav from './components/Nav';
-import Footer from './components/Footer';
+import Home from './pages/Home';
+import MovieDetails from './pages/MovieDetails';
+import MovieSearch from './pages/MovieSearch';
 import UserDetails from './pages/UserDetails';
+
+import Footer from './components/Footer';
+import Nav from './components/Nav';
 
 
 function App() {

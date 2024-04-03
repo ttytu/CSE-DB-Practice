@@ -11,12 +11,10 @@ from movieLens.controllers import (
 	get_genre,
 	get_ratings,
 	get_rating,
-	get_user_rating,
 	get_movie_rating,
 	get_movie_genre,
 	search_movies,
 	get_average_rating,
-	get_user_average_rating,
 	get_user_movie_rating,
 	get_user_rated_movies,
 )
@@ -97,24 +95,6 @@ def get_user_api(user_id: int):
 	"""
 	user = get_user(user_id)
 	return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(user))
-
-
-@user_router.get("/v1/user/{user_id}/rating")
-def get_user_rating_api(user_id: int):
-	"""
-	This rating API allow you to fetch specific rating data.
-	"""
-	rating = get_user_rating(user_id)
-	return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(rating))
-
-
-@user_router.get("/v1/user/{user_id}/average")
-def get_user_average_rating_api(user_id: int):
-	"""
-	This average rating API allow you to fetch specific average rating data.
-	"""
-	average = get_user_average_rating(user_id)
-	return JSONResponse(status_code=status.HTTP_200_OK, content=jsonable_encoder(average))
 
 
 @user_router.get("/v1/user/{user_id}/rated")

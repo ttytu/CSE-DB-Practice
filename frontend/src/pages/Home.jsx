@@ -14,7 +14,6 @@ const Home = () => {
 				const response = await fetch('http://localhost:8001/v1/movie');
 				const data = await response.json();
 				setMovies(data);
-				console.log(data);
 			} catch (error) {
 				console.error('Error fetching movies:', error);
 			}

@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 
 
 const Nav = ({ user, setUser, isloggedIn, setIsLoggedIn }) => {
@@ -9,7 +8,7 @@ const Nav = ({ user, setUser, isloggedIn, setIsLoggedIn }) => {
 
 	const fetchUser = async (userId) => {
 		try {
-			const response = await fetch(`http://localhost:8000/v1/user/${userId}`);
+			const response = await fetch(`http://localhost:8001/v1/user/${userId}`);
 			const data = await response.json();
 
 			if (response.ok) {
@@ -18,8 +17,6 @@ const Nav = ({ user, setUser, isloggedIn, setIsLoggedIn }) => {
 
 				localStorage.setItem('user', JSON.stringify(data));
 				localStorage.setItem('isloggedIn', true);
-
-				console.log('user:', data);
 			} else {
 				console.error('Error fetching user:', data);
 				alert('User not found');
@@ -37,7 +34,6 @@ const Nav = ({ user, setUser, isloggedIn, setIsLoggedIn }) => {
 			localStorage.removeItem('isloggedIn');
 		} else if (userId > 0) {
 			fetchUser(userId);
-			alert('User logged in');
 		}
 		else {
 			alert('Please enter a valid User ID');
