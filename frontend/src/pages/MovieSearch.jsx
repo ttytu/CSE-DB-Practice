@@ -40,16 +40,16 @@ const MovieSearch = () => {
 
 	useEffect(() => {
 		if (sortType === 'title') {
-			setMovies([...movies].sort((a, b) => a.movieTitle.localeCompare(b.movieTitle)));
-		} else if (sortType === 'year') {
-			setMovies([...movies].sort((a, b) => a.year - b.year));
+			setMovies(movies => [...movies].sort((a, b) => a.movieTitle.localeCompare(b.movieTitle)));
+		} else if (sortType === 'release date') {
+			setMovies(movies => [...movies].sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate)));
 		}
 		else {
-			setMovies([...movies].sort((a, b) => a.movieId - b.movieId));
+			setMovies(movies => [...movies].sort((a, b) => a.movieId - b.movieId));
 		}
 
-		if (!sort) { setMovies([...movies].reverse()); }
-	}, [sort, sortType, movies]);
+		if (!sort) { setMovies(movies => [...movies].reverse()); }
+	}, [sortType, sort]);
 
 	return (
 		<div className="max-w-screen-lg mx-auto w-full grid grid-cols-1 gap-24 pt-40">
@@ -91,7 +91,7 @@ const MovieSearch = () => {
 						>
 							<option value="">Select</option>
 							<option value="title">Title</option>
-							<option value="year">Year</option>
+							<option value="release date">Release</option>
 						</select>
 					</div>
 				</div>
