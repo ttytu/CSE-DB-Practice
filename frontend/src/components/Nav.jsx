@@ -17,6 +17,7 @@ const Nav = ({ user, setUser, isloggedIn, setIsLoggedIn }) => {
 
 				localStorage.setItem('user', JSON.stringify(data));
 				localStorage.setItem('isloggedIn', true);
+				console.log('User fetched:', data);
 			} else {
 				console.error('Error fetching user:', data);
 				alert('User not found');
@@ -32,6 +33,7 @@ const Nav = ({ user, setUser, isloggedIn, setIsLoggedIn }) => {
 			setIsLoggedIn(false);
 			localStorage.removeItem('user');
 			localStorage.removeItem('isloggedIn');
+			window.location.href = '/';
 		} else if (userId > 0) {
 			fetchUser(userId);
 		}

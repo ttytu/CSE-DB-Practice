@@ -1,10 +1,7 @@
-# Dockerfile for production
-# NOTE: some of the ENV variables are just for example purposes. Update them to your own production values.
 FROM python:3.12-slim-bookworm
 
 WORKDIR /app
 
-# Update the ENV information to the correct your production MySQL infos.
 ENV APP_SECRET_STRING=AppS3rcr3t
 ENV DATABASE_USERNAME=appuser
 ENV DATABASE_PASSWORD=P4ssw0rd

@@ -41,11 +41,11 @@ docker-compose build
 docker-compose up 
 ```
 
-#### Project Development Container Ports
+#### Project Development Container Host Ports
 
 - DB server `http://localhost:3307` 
 - API server `http://localhost:8001` 
-- Frontend server `http://localhost:3001` 
+- Frontend `http://localhost:3001` 
 
 --- 
 
@@ -53,17 +53,28 @@ docker-compose up
 
 `/mysql` 
 
+- Initial DB: `/mysql/db/dump.sql` 
+- Initial container ENV settings: `/mysql/local.env` 
+
 --- 
 
 ### FastAPI 
 
 `/api` 
 
+- Database connector: `/api/database/connector.py` 
+- movieLens  
+  - movieLens controllers: `/api/movieLens/controllers.py` 
+  - movieLens routers: `/api/movieLens/routers.py` 
+- FastAPI main app: `/api/main.py` 
+
 --- 
 
 ### Frontend React 
 
-`/frontend`
+`/frontend` 
+
+- [React app](https://create-react-app.dev/docs/) 
+- [Tailwind CSS](https://tailwindcss.com/docs/) 
 
 --- 
-
