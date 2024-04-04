@@ -49,7 +49,7 @@ const MovieSearch = () => {
 		}
 
 		if (!sort) { setMovies([...movies].reverse()); }
-	}, [sort, sortType]);
+	}, [sort, sortType, movies]);
 
 	return (
 		<div className="max-w-screen-lg mx-auto w-full grid grid-cols-1 gap-24 pt-40">

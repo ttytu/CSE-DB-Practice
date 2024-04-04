@@ -23,7 +23,7 @@ const MovieDetails = ({ movieId, user }) => {
 		};
 		console.log('movieId:', movieId);
 		fetchMovie();
-	}, [movieId]);
+	}, [movieId, user]);
 
 	const [relatedMovies, setrelatedMovies] = useState([]);
 

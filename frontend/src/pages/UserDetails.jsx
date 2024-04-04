@@ -19,7 +19,7 @@ const UserDetails = ({ user }) => {
 		}
 
 		fetchMovies();
-	}, []);
+	}, [user]);
 
 	return (
 		<div className="max-w-screen-lg mx-auto w-full grid grid-cols-1 gap-10 pt-32 px-4 lg:px-0">
