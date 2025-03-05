@@ -1,4 +1,4 @@
-## CSE3207 Database Project
+## CSE Database Project
 
 ### Setup 
 
