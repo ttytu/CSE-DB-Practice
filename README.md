@@ -10,8 +10,6 @@
 6. Build Docker Image & Run Images in Containers `docker-compose up` 
 7. Happy coding! 
 
---- 
-
 ## Project Structure
 
 - GitHub 
@@ -20,15 +18,11 @@
 - API: FastAPI Python `/api`
 - Frontend: React JS `/frontend` 
 
---- 
-
 ## GitHub
 
 ```shell
 git clone https://github.com/ttytu/CSE-DB-Practice.git
 ```
-
---- 
 
 ## Dev Env - Docker Compose
 
@@ -47,23 +41,14 @@ docker-compose up
 - API server `http://localhost:8001` 
 - Frontend server `http://localhost:3001` 
 
---- 
-
 ## MySQL 
 
 `/mysql` 
-
---- 
 
 ## FastAPI 
 
 `/api` 
 
---- 
-
 ## Frontend React 
 
 `/frontend`
-
---- 
-
