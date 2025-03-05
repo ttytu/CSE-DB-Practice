@@ -1,4 +1,4 @@
-## CSE Database Project
+## CSE Database Practice Project
 
 ### Setup 
 
