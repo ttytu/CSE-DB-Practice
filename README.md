@@ -25,7 +25,7 @@
 ### GitHub
 
 ```shell
-git clone https://github.com/ttytu/CSE3207-Database.git
+git clone https://github.com/ttytu/CSE-DB-Practice.git
 ```
 
 --- 
