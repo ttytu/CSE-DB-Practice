@@ -1,6 +1,6 @@
-## CSE Database Practice Project
+# CSE Database Practice Project
 
-### Setup 
+## Setup 
 
 1. Download & Install Docker Desktop [Docker Desktop](https://www.docker.com/products/docker-desktop/) 
 2. Run Docker Desktop 
@@ -12,7 +12,7 @@
 
 --- 
 
-### Project Structure
+## Project Structure
 
 - GitHub 
 - Docker 
@@ -22,7 +22,7 @@
 
 --- 
 
-### GitHub
+## GitHub
 
 ```shell
 git clone https://github.com/ttytu/CSE-DB-Practice.git
@@ -30,7 +30,7 @@ git clone https://github.com/ttytu/CSE-DB-Practice.git
 
 --- 
 
-### Dev Env - Docker Compose
+## Dev Env - Docker Compose
 
 - [Docker](https://www.docker.com/) 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) 
@@ -41,7 +41,7 @@ docker-compose build
 docker-compose up 
 ```
 
-#### Project Development Container Ports
+### Project Development Container Ports
 
 - DB server `http://localhost:3307` 
 - API server `http://localhost:8001` 
@@ -49,19 +49,19 @@ docker-compose up
 
 --- 
 
-### MySQL 
+## MySQL 
 
 `/mysql` 
 
 --- 
 
-### FastAPI 
+## FastAPI 
 
 `/api` 
 
 --- 
 
-### Frontend React 
+## Frontend React 
 
 `/frontend`
 
