@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/77836eaa-c209-47f8-b40d-02ac1839c8f6)# CSE Database Practice Project
+# Full Stack Database Practice Project
 
 ## Setup 
 
