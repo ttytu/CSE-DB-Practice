@@ -30,7 +30,7 @@ git clone https://github.com/ttytu/CSE-DB-Practice.git
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) 
 
 ```shell
-cd CSE3207-Database 
+cd CSE-DB-Practice 
 docker-compose build 
 docker-compose up 
 ```
