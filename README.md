@@ -1,4 +1,4 @@
-# CSE Database Practice Project
+![image](https://github.com/user-attachments/assets/77836eaa-c209-47f8-b40d-02ac1839c8f6)# CSE Database Practice Project
 
 ## Setup 
 
@@ -45,10 +45,56 @@ docker-compose up
 
 `/mysql` 
 
+Access database container from MySQL Workbench
+
+- Schema name: fastapi_app
+- Host port: `3307`
+- Initial root password: P4ssw0rd
+- Tables:
+  - movie
+    - movieId, videoReleaseDate, releaseDate, movieTitle, year, backdrop_path, poster_path
+  - movie_genres
+    - mgenreId, movieId, genre
+  - ratings
+    - ratingsId, userId, movieId, ratingScore, timestamp
+  - user
+    - userId, age, gender, occupation, ZIPCODE 
+
+![image](https://github.com/user-attachments/assets/779e6fb8-08dd-453a-9075-a7caf72a4b19)
+
 ## FastAPI 
 
 `/api` 
 
+Access API server container from local browser 
+
+- API docs: http://localhost:8001/v1/docs 
+- Edit code in `/CSE3207-Database/api/`
+  - Database connector:
+    - `/api/database/connector.py`
+  - movieLens controllers:
+    - `/api/movieLens/controllers.py`
+  - movieLens routers:
+    - `/api/movieLens/routers.py`
+  - FastAPI main app:
+    - `/api/main.py`
+- FastAPI documentation: https://fastapi.tiangolo.com/
+
+![image](https://github.com/user-attachments/assets/15136cea-dc33-467c-b416-7036efe8c711)
+
 ## Frontend React 
 
 `/frontend`
+
+Access web page from local browser 
+
+- http://localhost:3001/ 
+- Provided Pages 
+  - Home, MovieDetails, MovieSearch, UserDetails
+- Provided Components
+  - Nav, Footer, Banner, MovieCard, MovieList, etc
+- React app with Tailwind CSS
+  - https://create-react-app.dev/docs/getting-started
+  - https://tailwindcss.com/docs/installation 
+
+![image](https://github.com/user-attachments/assets/c74199ad-8708-47ab-a138-e657f83c3f53)
